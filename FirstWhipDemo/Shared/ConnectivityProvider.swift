@@ -46,7 +46,7 @@ class ConnectivityProvider: NSObject, WCSessionDelegate{
         
 //        print("Messaggio: \(message["path"])")
         
-        let value = Value(path: message["path"] as! String, value: message["value"] as! Double)
+        let value = Value(path: message["path"] as! String, value: message["value"] as! Int)
         
         DispatchQueue.main.async {
             self.modelUpdates.send(value)

@@ -105,13 +105,13 @@ struct ContentView: View {
                         force = calculateForce(leverAngle: newValue)
                     }
                     
-                    viewModel.sendMessage(key: "vittoria", value: scrollAmount)
+                    viewModel.sendMessage(key: "vittoria", value: Int(scrollAmount))
                     
                 }
                 .onAppear(perform:{
                     self.startGyroscopeUpdates()
                     self.startAccelerometerUpdates()
-                    self.startCheckingAngle()
+//                    self.startCheckingAngle()
                 })
 
             
@@ -181,8 +181,8 @@ struct ContentView: View {
                     canTrow = false
                     currentValue = 0
                     print("Provo ad inviare i segnali di lancio")
-                    viewModel.sendMessage(key: "trow", value: 1.0)
-                    viewModel.sendMessage(key: "maxAcceleration", value: maxAcceleration)
+                    viewModel.sendMessage(key: "trow", value: 1)
+//                    viewModel.sendMessage(key: "maxAcceleration", value: maxAcceleration)
                     viewModel.maxAcceleration = 0
 
                 }
@@ -195,11 +195,13 @@ struct ContentView: View {
     
     // Funzione per avviare il timer per controllare l'angolo della leva
     private func startCheckingAngle() {
+        
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            
             let currentAngle = scroll
             let difference = abs(currentAngle - previousScroll)
             // Controllo se la differenza è significativa
-            if difference > 0.135 {
+            if difference > 1 {
                 // Calcolo della velocità di riproduzione dell'audio in base a 'currentDifference'
                 var rate: Float = 1.0
                 if strenghtGlobal == 0 || strenghtGlobal == 1 {
@@ -213,10 +215,10 @@ struct ContentView: View {
                 // Avvio della riproduzione dell'audio solo se non è già in riproduzione
                 if let audioPlayer = audioPlayer, !audioPlayer.isPlaying {
                     print("Entro nella simulazione suono")
-                    audioPlayer.stop()
                     audioPlayer.rate = rate
                     audioPlayer.play()
                 }
+                
             } else {
                 // Ferma l'audio se l'angolo non cambia significativamente
                 if let audioPlayer = audioPlayer {

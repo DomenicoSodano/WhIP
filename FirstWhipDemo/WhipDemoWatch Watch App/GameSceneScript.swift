@@ -19,27 +19,27 @@ class GameSceneScript: SKScene, SKPhysicsContactDelegate{
     
     override func update(_ currentTime: TimeInterval) {
         
-        if viewModel.canTrow > 0.9 && viewModel.canTrow < 1.1 {
+        if viewModel.canTrow == 1 {
             print("Reimposto la posibbilità di pescare")
             canTrow = true
             viewModel.canTrow = 0
-            viewModel.sendMessage(key: "canTrow", value: 0.0)
+            viewModel.sendMessage(key: "canTrow", value: 0)
         }
         
         //Autolocking function che esegue una sola volta la simulazione
         //Gli verrà permesso di
-        if viewModel.inizioSimulazione >= 0.9 && viewModel.inizioSimulazione < 1.1 && autolock {
+        if viewModel.inizioSimulazione == 1 && autolock {
             
             print("Inizio Simulazione")
             
             viewModel.inizioSimulazione = 0
-            viewModel.sendMessage(key: "InizioSimulazione", value: 0.0)
+            viewModel.sendMessage(key: "InizioSimulazione", value: 0)
             
             autolock = false
             simulation.simulate()
             
-            viewModel.trow = 0.0
-            viewModel.sendMessage(key: "trow", value: 0.0)
+            viewModel.trow = 0
+            viewModel.sendMessage(key: "trow", value: 0)
             
             
         }
@@ -53,15 +53,15 @@ class GameSceneScript: SKScene, SKPhysicsContactDelegate{
                 
             case 0:
                 print("Invio il segnale di Vittoria.")
-                viewModel.sendMessage(key: "FineSimulazione", value: 0.0)
+                viewModel.sendMessage(key: "FineSimulazione", value: 0)
                 
             case 1:
                 print("Invio il segnale di Sconfitta.")
-                viewModel.sendMessage(key: "FineSimulazione", value: 1.0)
+                viewModel.sendMessage(key: "FineSimulazione", value: 1)
                 
             case 2:
                 print("Invio del segnale di rottura lenza.")
-                viewModel.sendMessage(key: "FineSimulazione", value: 2.0)
+                viewModel.sendMessage(key: "FineSimulazione", value: 2)
                 
             default:
                 print("CondizioneVittoria Buggata. Valore \(condizioneVittoria)")
@@ -69,7 +69,7 @@ class GameSceneScript: SKScene, SKPhysicsContactDelegate{
             }
 
             condizioneVittoria = -1
-            viewModel.fineSimulazione = -1.0
+            viewModel.fineSimulazione = -1
 
         }
     }

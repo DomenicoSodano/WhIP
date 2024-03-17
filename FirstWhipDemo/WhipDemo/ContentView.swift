@@ -35,24 +35,11 @@ struct Sview: View {
     }
 
     var body: some View {
-        ZStack {
-            
-            SpriteView(scene: scene)
-            
-            if mostraBarra {
-                BarraPiena(valore: viewModel.vittoria)
-            }
-            
-            
-//                .frame(width: 600, height: 30)
-//                .position(x: 360, y: 360)
-//                .onChange(of: viewModel.vittoria) { newValue in
-//                // Aggiorna la barra di progressione quando il valore vittoria cambia
-//                print("Value of vittoria changed to \(newValue)")}
-
-        }
+      
+        SpriteView(scene: scene)
         
     }
+    
 
 }
 

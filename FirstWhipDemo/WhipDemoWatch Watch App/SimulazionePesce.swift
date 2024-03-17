@@ -106,7 +106,7 @@ class SimulazionePesce {
             self.simulationTimer.invalidate()
             self.fishing.simulaForzaPesce(timeToChange: Double(self.fishSpawned))
             //Si invia il segnale di avvenuta pesca
-            viewModel.sendMessage(key: "Pesca", value: 1.0)
+            viewModel.sendMessage(key: "Pesca", value: 1)
         }
 
     }
@@ -284,7 +284,7 @@ class HapticFishing {
         }
         
         // Si invia l'attuale valore della vittoria per far aggiornare la barra nella scena spritekit
-        viewModel.sendMessage(key: "Vittoria", value: Double(self.vittoria))
+        viewModel.sendMessage(key: "Vittoria", value: self.vittoria)
         
         previousScroll = scroll
         

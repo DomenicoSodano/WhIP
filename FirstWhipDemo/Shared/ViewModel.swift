@@ -14,29 +14,29 @@ var variableTest = 1
 // MARK: - Value
 struct Value: Codable {
     let path: String
-    let value: Double
+    let value: Int
 }
 
 class ViewModel: ObservableObject{
     
     private var connectivityProvider: ConnectivityProvider
     
-    @Published var scrollspeed: Double = 0.0
-    @Published var acceleation: Double = 0.0
-    @Published var maxAcceleration: Double = 0.0
-    @Published var deltaY: Double = 0.0
-    @Published var deltaX: Double = 0.0
-    @Published var deltaZ: Double = 0.0
-    @Published var trow: Double = 0.0
-    @Published var avanti: Double = 0.0
-    @Published var fineSimulazione: Double = -1.0
-    @Published var inizioSimulazione: Double = -1.0
-    @Published var canTrow: Double = 0.0
+    @Published var scrollspeed: Int = 0
+    @Published var acceleation: Int = 0
+    @Published var maxAcceleration: Int = 0
+    @Published var deltaY: Int = 0
+    @Published var deltaX: Int = 0
+    @Published var deltaZ: Int = 0
+    @Published var trow: Int = 0
+    @Published var avanti: Int = 0
+    @Published var fineSimulazione: Int = -1
+    @Published var inizioSimulazione: Int = -1
+    @Published var canTrow: Int = 0
     
-    @Published var vittoria: Double = 0.0
+    @Published var vittoria: Int = 0
     
-    @Published var pesca: Double = 0.0
-    @Published var frDurability: Double = 100.0
+    @Published var pesca: Int = 0
+    @Published var frDurability: Int = 100
     
     
     @Published var showProgressBar = false
